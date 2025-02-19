@@ -1,0 +1,33 @@
+Nama	 		: Fryscha Febryanti Puspitasari
+NIM 			: 224308008
+Kelas 	 		: TKA 6A
+Akun Github (Tautan) 	: https://github.com/Fryscha
+Student Lab Assistant 	: Yulia Brilianty
+
+Analisis Hasil:
+a. Apa yang terjadi saat objek berwarna merah muncul di kamera?
+Jawab:
+Saat objek berwarna merah muncul, sistem akan mendeteksi warna berdasarkan rentang nilai HSV yang telah ditentukan. Apabila objek berwarna merah ada dalam frame, mask akan menghasilkan nilai 255 (putih) untuk pixel yang sesuai dengan rentang ini dan 0 (hitam) untuk pixel lainnya. Kemudian, hasil dari deteksi ini kemudian digabungkan kembali dengan frame asli menggunakan operasi bitwise_and, sehingga hanya area yang berwarna merah yang akan terlihat dalam jendela ‘Result’, di mana hanya objek merah yang terlihat.
+
+b. Bagaimana sistem mendeteksi dan memfilter warna merah?
+Jawab:
+Sistem mendeteksi dan memfilter warna merah dengan langkah pertama yaitu konversi warna. Frame dari kamera yang awalnya dalam format BGR diubah ke ruang warna HSV menggunakan cv2.cvtColor(frame, cv2.COLOR_BGR2HSV). Langkah berikutnya yaitu membuat mask dengan menggunakan cv2.inRange(hsv, lower_red, upper_red). Dengan hal ini, sistem membuat mask hanya mengizinkan pixel yang berada dalam rentang HSV yang ditentukan. Mask ini adalah gambar grayscale di mana pixel yang sesuai dengan rentang warna merah memiliki nilai 255 dan yang tidak sesuai memiliki nilai 0. Langkah selanjutnya yakni menggunakan operasi cv2.bitwise_and(frame, frame, mask=mask) yang digunakan untuk mengaplikasikan mask ke frame asli, sehingga hanya area yang berwarna merah yang ditampilkan dalam hasil.
+
+c. Bagaimana metode ini dapat diterapkan dalam intelligent control systems?
+Jawab:
+Metode ini dapat diterapkan dalam intelligent control systems dengan pengendalian robot yang mengarahkan atau melakukan tindakan berdasarkan deteksi objek berwarna tertentu. Misalnya, robot pengumpul botol dapat didesain untuk mengenali botol berwarna merah dan mengumpulkannya. Kemudian, terdapat contoh lain seperti pengenalan objek. Dalam aplikasi ini, deteksi warna dapat digunakan sebagai fitur awal untuk mengidentifikasi objek dalam gambar atau video. 
+
+Diskusi:
+a. Bagaimana AI dapat meningkatkan sistem kontrol berbasis Computer Vision?
+Jawab:
+AI dapat meningkatkan sistem kontrol berbasis Computer Vision melalui beberapa cara. Pertama, pengenalan pola yang lebih baik. Algoritma Machine Learning dan Deep Learning dapat digunakan untuk melatih model dalam mengenali pola dan objek yang lebih kompleks, bukan hanya berdasarkan warna atau bentuk. Hal ini memungkinkan sistem untuk beradaptasi dengan variasi dalam data input. Kedua, pengolahan data yang lebih efisien. AI dapat membantu dalam pengolahan data secara real-time, memungkinkan sistem untuk membuat keputusan lebih cepat dan lebih akurat. Ketiga, adaptasi terhadap lingkungan. Dengan menggunakan teknik pembelajaran yang mendalam, sistem dapat belajar dari pengalaman dan meningkatkan kinerjanya seiring waktu dan beradaptasi dengan perubahan dalam lingkungan.
+
+b. Apa kelebihan dan kekurangan metode deteksi objek berbasis warna?
+Jawab:
+Kelebihan dari metode deteksi objek berbasis warna yaitu sederhana dan cepat. Metode deteksi berbasis warna relatif mudah diimplementasikan dan dapat memberikan hasil yang cepat dalam kondisi pencahayaan yang baik. Kelebihan selanjutnya yaitu biaya yang rendah. Hal ini tidak memerlukan perangkat keras yang mahal atau algoritma kompleks, sehingga lebih ekonomis untuk aplikasi sederhana.
+Kekurangan dari metode deteksi objek berbasis warna yaitu sensitif terhadap pencahayaan. Perubahan dalam kondisi pencahayaan dapat mempengaruhi akurasi deteksi warna yang menyebabkan kesalahan dalam identifikasi objek. Selain itu, kekurangan berikutnya yakni keterbatasan dalam variasi warna. Objek dengan warna yang mirip atau latar belakang yang berwarna sama dapat menyebabkan kesulitan dalam deteksi.
+
+c.Bagaimana cara meningkatkan akurasi sistem deteksi objek? 
+Jawab:
+Cara meningkatkan akurasi sistem deteksi objek dengan menggunakan model Deep Learning seperti Convolutional Neural Networks (CNN) untuk meningkatkan akurasi deteksi objek. Selain itu, cara lainnya ialah menggunakan teknik augmentasi data untuk meningkatkan variasi dalam dataset pelatihan, sehingga model dapat belajar dari lebih banyak contoh.
+
